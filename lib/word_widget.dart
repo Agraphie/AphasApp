@@ -3,11 +3,24 @@ import 'package:flag/flag.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class WordWidget extends StatelessWidget {
+class WordWidget extends StatefulWidget {
   final Word _word;
   final Function(String, String) _speak;
 
   const WordWidget(this._word, this._speak);
+
+  @override
+  _WordWidgetState createState() => _WordWidgetState();
+}
+
+class _WordWidgetState extends State<WordWidget> {
+  String _currentText;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentText = widget._word.defaultWord ?? widget._word.wordGer;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +34,7 @@ class WordWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(top: 50.0),
               child: Text(
-                _word.wordGer,
+                _currentText,
                 style: TextStyle(fontSize: 30),
               ),
             ),
@@ -31,7 +44,7 @@ class WordWidget extends StatelessWidget {
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(_word.img, height: 150),
+            child: Image.network(widget._word.img, height: 150),
           ),
           SizedBox(
             height: 30,
@@ -44,13 +57,23 @@ class WordWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     createFlag("DE", () {
-                      _speak("de-DE", _word.wordGer);
+                      String word =
+                          widget._word.defaultWord ?? widget._word.wordGer;
+                      widget._speak("de-DE", word);
+                      setState(() {
+                        _currentText = word;
+                      });
                     }),
                     SizedBox(
                       width: 5,
                     ),
                     createFlag("GB", () {
-                      _speak("en-GB", _word.wordEn);
+                      String word =
+                          widget._word.defaultWord ?? widget._word.wordEn;
+                      widget._speak("en-GB", word);
+                      setState(() {
+                        _currentText = word;
+                      });
                     }),
                   ],
                 ),
@@ -61,7 +84,12 @@ class WordWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     createFlag("PL", () {
-                      _speak("pl-PL", _word.wordPl);
+                      String word =
+                          widget._word.defaultWord ?? widget._word.wordPl;
+                      widget._speak("pl-PL", word);
+                      setState(() {
+                        _currentText = word;
+                      });
                     }),
                   ],
                 ),

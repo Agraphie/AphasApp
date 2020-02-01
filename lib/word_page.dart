@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class Word {
+  String defaultWord;
   String wordGer;
   String wordEn;
   String wordPl;
