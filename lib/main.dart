@@ -21,7 +21,7 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/wordPage': (context) => WordPage(),
-        '/numbersPage': (context) => NumberPage(),
+        '/numberPage': (context) => NumberPage(),
         '/timePage': (context) => TimePage(),
         '/calendarPage': (context) => CalendarPage(),
       },
