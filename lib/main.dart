@@ -58,8 +58,16 @@ class FirstScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              MainCard(),
-              MainCard(),
+              MainCard(
+                color: Color.fromRGBO(255, 251, 210, 1.0),
+                text: 'Words',
+                imagePath: 'images/Group7.png',
+              ),
+              MainCard(
+                color: Color.fromRGBO(212, 238, 255, 1.0),
+                text: 'Numbers',
+                imagePath: 'images/Group8.png',
+              ),
             ],
           )),
           Expanded(
@@ -68,8 +76,16 @@ class FirstScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              MainCard(),
-              MainCard(),
+              MainCard(
+                color: Color.fromRGBO(255, 223, 223, 1.0),
+                text: 'Time',
+                imagePath: 'images/Group5.png',
+              ),
+              MainCard(
+                color: Color.fromRGBO(203, 252, 223, 1.0),
+                text: 'Calendar',
+                imagePath: 'images/Group6.png',
+              ),
             ],
           )),
         ],
