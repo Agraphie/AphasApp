@@ -5,12 +5,19 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 class Word {
   String defaultWord;
+  DateTime dateTime;
   String wordGer;
   String wordEn;
   String wordPl;
   String img;
 
-  Word({this.wordGer, this.wordEn, this.wordPl, this.img});
+  Word(
+      {this.wordGer,
+      this.wordEn,
+      this.wordPl,
+      this.img,
+      this.defaultWord,
+      this.dateTime});
 }
 
 class WordPage extends StatefulWidget {

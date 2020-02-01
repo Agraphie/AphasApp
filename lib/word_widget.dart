@@ -19,11 +19,11 @@ class _WordWidgetState extends State<WordWidget> {
   @override
   void initState() {
     super.initState();
-    _currentText = widget._word.defaultWord ?? widget._word.wordGer;
   }
 
   @override
   Widget build(BuildContext context) {
+    _currentText = widget._word.defaultWord ?? widget._word.wordGer;
     return Container(
       constraints:
           BoxConstraints.expand(width: MediaQuery.of(context).size.width),
@@ -42,10 +42,12 @@ class _WordWidgetState extends State<WordWidget> {
           SizedBox(
             height: 15,
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.network(widget._word.img, height: 150),
-          ),
+          widget._word.dateTime != null
+              ? buildClock()
+              : ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(widget._word.img, height: 150),
+                ),
           SizedBox(
             height: 30,
           ),
@@ -126,5 +128,9 @@ class _WordWidgetState extends State<WordWidget> {
         ),
       ),
     );
+  }
+
+  Widget buildClock() {
+    return Container();
   }
 }
