@@ -1,3 +1,4 @@
+import 'package:aphas_app/word_page.dart';
 import 'package:flutter/material.dart';
 import 'card.dart';
 import 'package:flutter/services.dart';
@@ -13,7 +14,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: WordPage(),
       theme: ThemeData(
         primaryTextTheme: TextTheme(
           title: TextStyle(color: Colors.black),

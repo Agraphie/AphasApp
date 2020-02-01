@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class WordWidget extends StatelessWidget {
   final Word _word;
+  final Function(String, String) _speak;
 
-  const WordWidget(this._word);
+  const WordWidget(this._word, this._speak);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class WordWidget extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 50.0),
             child: Text(
-              _word.word,
+              _word.wordGer,
               style: TextStyle(fontSize: 30),
             ),
           ),
@@ -35,11 +36,15 @@ class WordWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            createFlag("DE"),
+            createFlag("DE", () {
+              _speak("de-DE", _word.wordGer);
+            }),
             SizedBox(
               width: 5,
             ),
-            createFlag("GB"),
+            createFlag("GB", () {
+              _speak("en-GB", _word.wordEn);
+            }),
           ],
         ),
         SizedBox(
@@ -48,7 +53,9 @@ class WordWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            createFlag("PL"),
+            createFlag("PL", () {
+              _speak("pl-PL", _word.wordPl);
+            }),
           ],
         ),
         SizedBox(
@@ -58,26 +65,29 @@ class WordWidget extends StatelessWidget {
     );
   }
 
-  Widget createFlag(final String isoCode) {
-    return Container(
-      decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey,
-            blurRadius: 20.0,
-            // has the effect of softening the shadow
-            spreadRadius: 0,
-            // has the effect of extending the shadow
-            offset: Offset(
-              3.0, // horizontal, move right 10
-              5.0, // vertical, move down 10
-            ),
-          )
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(5),
-        child: Flags.getFullFlag(isoCode, 100, null),
+  Widget createFlag(final String isoCode, final Function onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey,
+              blurRadius: 20.0,
+              // has the effect of softening the shadow
+              spreadRadius: 0,
+              // has the effect of extending the shadow
+              offset: Offset(
+                3.0, // horizontal, move right 10
+                5.0, // vertical, move down 10
+              ),
+            )
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(5),
+          child: Flags.getFullFlag(isoCode, 100, null),
+        ),
       ),
     );
   }
