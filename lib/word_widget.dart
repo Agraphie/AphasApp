@@ -11,57 +11,65 @@ class WordWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 50.0),
-            child: Text(
-              _word.wordGer,
-              style: TextStyle(fontSize: 30),
+    return Container(
+      constraints:
+          BoxConstraints.expand(width: MediaQuery.of(context).size.width),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: Text(
+                _word.wordGer,
+                style: TextStyle(fontSize: 30),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.network(_word.img, height: 200),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            createFlag("DE", () {
-              _speak("de-DE", _word.wordGer);
-            }),
-            SizedBox(
-              width: 5,
+          SizedBox(
+            height: 15,
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.network(_word.img, height: 150),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    createFlag("DE", () {
+                      _speak("de-DE", _word.wordGer);
+                    }),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    createFlag("GB", () {
+                      _speak("en-GB", _word.wordEn);
+                    }),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    createFlag("PL", () {
+                      _speak("pl-PL", _word.wordPl);
+                    }),
+                  ],
+                ),
+              ],
             ),
-            createFlag("GB", () {
-              _speak("en-GB", _word.wordEn);
-            }),
-          ],
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            createFlag("PL", () {
-              _speak("pl-PL", _word.wordPl);
-            }),
-          ],
-        ),
-        SizedBox(
-          height: 30,
-        ),
-      ],
+          )
+        ],
+      ),
     );
   }
 
@@ -86,7 +94,7 @@ class WordWidget extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5),
-          child: Flags.getFullFlag(isoCode, 100, null),
+          child: Flags.getFullFlag(isoCode, 80, null),
         ),
       ),
     );

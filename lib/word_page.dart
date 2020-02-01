@@ -78,6 +78,7 @@ class _WordPageState extends State<WordPage> {
             child: ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               itemCount: words.length,
+              scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 var word = words[_currentIndex];
                 return WordWidget(word, (isoCode, speakWord) {
@@ -90,23 +91,7 @@ class _WordPageState extends State<WordPage> {
               },
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              controlButton(Icons.arrow_back, Colors.red, () {
-                setState(() {
-                  _currentIndex = _currentIndex - 1 > 0 ? _currentIndex - 1 : 0;
-                });
-              }),
-              controlButton(Icons.arrow_forward, Colors.green, () {
-                setState(() {
-                  _currentIndex = _currentIndex + 1 < words.length
-                      ? _currentIndex + 1
-                      : words.length - 1;
-                });
-              })
-            ],
-          )
+          buildControlButtons()
         ],
       ),
     );
@@ -114,11 +99,11 @@ class _WordPageState extends State<WordPage> {
 
   Widget controlButton(final IconData arrow, Color color, Function callback) {
     return IconButton(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(15),
       icon: Icon(arrow),
       color: color,
       onPressed: callback,
-      iconSize: 48,
+      iconSize: 40,
     );
   }
 
@@ -133,5 +118,25 @@ class _WordPageState extends State<WordPage> {
         if (result == 1) setState(() => ttsState = TtsState.playing);
       }
     }
+  }
+
+  Widget buildControlButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        controlButton(Icons.arrow_back, Colors.red, () {
+          setState(() {
+            _currentIndex = _currentIndex - 1 > 0 ? _currentIndex - 1 : 0;
+          });
+        }),
+        controlButton(Icons.arrow_forward, Colors.green, () {
+          setState(() {
+            _currentIndex = _currentIndex + 1 < words.length
+                ? _currentIndex + 1
+                : words.length - 1;
+          });
+        })
+      ],
+    );
   }
 }
