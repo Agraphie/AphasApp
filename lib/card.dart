@@ -10,9 +10,9 @@ class MainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, route),
-      child: Expanded(
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, route),
         child: Card(
           margin: EdgeInsets.all(8.0),
           elevation: 1.0,
