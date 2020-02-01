@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'HomePage.dart';
-import 'WordsPage.dart';
-import 'NumbersPage.dart';
-import 'TimePage.dart';
-import 'CalendarPage.dart';
+import 'home_page.dart';
+import 'word_page.dart';
+import 'number_page.dart';
+import 'time_page.dart';
+import 'calendar_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
@@ -20,8 +20,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/': (context) => HomePage(),
-        '/wordsPage': (context) => WordsPage(),
-        '/numbersPage': (context) => NumbersPage(),
+        '/wordPage': (context) => WordPage(),
+        '/numbersPage': (context) => NumberPage(),
         '/timePage': (context) => TimePage(),
         '/calendarPage': (context) => CalendarPage(),
       },
