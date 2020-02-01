@@ -5,7 +5,11 @@ class MainCard extends StatelessWidget {
   final String text;
   final String imagePath;
 
-  MainCard({this.color, this.text, this.imagePath}) : super();
+  MainCard({
+    this.color,
+    this.text,
+    this.imagePath,
+  }) : super();
 
   @override
   Widget build(BuildContext context) {
