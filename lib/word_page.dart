@@ -10,7 +10,7 @@ class Word {
   String wordPl;
   String img;
 
-  Word({this.wordGer, this.wordEn, this.wordPl, this.img});
+  Word({this.defaultWord, this.wordGer, this.wordEn, this.wordPl, this.img});
 }
 
 class WordPage extends StatefulWidget {
