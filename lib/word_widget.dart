@@ -24,7 +24,6 @@ class _WordWidgetState extends State<WordWidget> {
   @override
   Widget build(BuildContext context) {
     _currentText = widget._word.defaultWord ?? widget._word.wordGer;
-
     return Container(
       constraints:
           BoxConstraints.expand(width: MediaQuery.of(context).size.width),
@@ -131,5 +130,9 @@ class _WordWidgetState extends State<WordWidget> {
         ),
       ),
     );
+  }
+
+  Widget buildClock() {
+    return Container();
   }
 }
